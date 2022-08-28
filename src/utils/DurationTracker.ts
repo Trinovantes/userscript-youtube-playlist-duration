@@ -34,7 +34,7 @@ export class DurationTracker {
         let idx = toSecMultiplier.length - 1
 
         while (durationInSec > 0) {
-            const interval = durationInSec / toSecMultiplier[idx]
+            const interval = Math.floor(durationInSec / toSecMultiplier[idx])
             if (interval > 0) {
                 duration += `:${interval.toFixed(0).padStart(2, '0')}`
             }
