@@ -20,6 +20,10 @@ export class DurationTracker {
             durationInSec += parseInt(parts[i]) * toSecMultiplier[i]
         }
 
+        if (isNaN(durationInSec)) {
+            throw new Error(`Failed to parse duration "${duration}"`)
+        }
+
         this.#totalTime += durationInSec
         return durationInSec
     }
