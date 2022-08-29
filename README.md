@@ -1,3 +1,17 @@
+# YouTube Playlist Duration
+
+![](.github/img/preview.png)
+
+This userscript shows the total duration of YouTube playlists.
+
+## Installation Guide
+
+1. Install a Userscript manager for your web browser
+    * [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (Firefox)
+    * [Tampermonkey](https://www.tampermonkey.net/) (Chrome, Firefox, Safari, Edge)
+
+2. [Download the latest build](https://github.com/Trinovantes/userscript-youtube-playlist-duration/releases/download/latest/userscript-youtube-playlist-duration.user.js). If you have Greasemonkey or Tampermonkey installed, then you should immediately be prompted with a confirmation window asking you if you wish to install this Userscript.
+
 ## Dev Guide
 
 1. Install prereqs
