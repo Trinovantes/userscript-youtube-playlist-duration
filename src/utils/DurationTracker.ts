@@ -17,7 +17,13 @@ export class DurationTracker {
 
         let durationInSec = 0
         for (let i = 0; i < parts.length; i++) {
-            durationInSec += parseInt(parts[i]) * toSecMultiplier[i]
+            const interval = parseInt(parts[i])
+            if (isNaN(interval)) {
+                console.warn(`Failed to parse interval "${parts[i]}"`)
+                continue
+            }
+
+            durationInSec += interval * toSecMultiplier[i]
         }
 
         if (isNaN(durationInSec)) {
