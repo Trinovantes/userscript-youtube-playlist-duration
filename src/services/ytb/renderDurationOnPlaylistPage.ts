@@ -14,7 +14,7 @@ export async function renderDurationOnPlaylistPage() {
     const durationNode = document.getElementById(durationNodeId) ?? $(`<strong style="display:block;" id="${durationNodeId}"></strong>`)
     $(durationNode).text('Duration: (?)')
 
-    const headerContainer = await findDelayedElement('ytd-playlist-sidebar-renderer #stats')
+    const headerContainer = await findDelayedElement('ytd-page-manager ytd-playlist-header-renderer .metadata-wrapper > .ytd-playlist-header-renderer:first-child')
     headerContainer.append(durationNode)
 
     const durationTracker = new DurationTracker()
