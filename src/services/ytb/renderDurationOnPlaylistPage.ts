@@ -11,11 +11,11 @@ export async function renderDurationOnPlaylistPage() {
     console.info(DEFINE.NAME, 'renderDurationOnPlaylistPage()', `videos:${videoRows.length}`)
 
     const durationNodeId = `${DEFINE.NAME}-duration`
-    const durationNode = document.getElementById(durationNodeId) ?? $(`<strong style="display:block;" id="${durationNodeId}"></strong>`)
+    const durationNode = document.getElementById(durationNodeId) ?? $(`<strong style="display:block; font-size: 1.2rem;" id="${durationNodeId}"></strong>`)
     $(durationNode).text('Duration: (?)')
 
-    const headerContainer = await findDelayedElement('ytd-page-manager ytd-playlist-header-renderer .metadata-wrapper > .ytd-playlist-header-renderer:first-child')
-    headerContainer.append(durationNode)
+    const headerContainer = (await findDelayedElement('ytd-page-manager ytd-playlist-header-renderer .metadata-wrapper > *:not(:hidden)')).eq(0)
+    headerContainer.after(durationNode)
 
     const durationTracker = new DurationTracker()
     for (const videoRow of videoRows) {
