@@ -41,7 +41,7 @@ export class DurationTracker {
 
         while (durationInSec > 0) {
             const interval = Math.floor(durationInSec / toSecMultiplier[idx])
-            if (interval > 0) {
+            if (interval > 0 || duration.length > 0) {
                 duration += `:${interval.toFixed(0).padStart(2, '0')}`
             }
 
@@ -50,5 +50,9 @@ export class DurationTracker {
         }
 
         return duration.substring(1)
+    }
+
+    get durationSec(): number {
+        return this._totalTime
     }
 }

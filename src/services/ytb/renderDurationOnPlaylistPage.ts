@@ -37,6 +37,6 @@ export async function renderDurationOnPlaylistPage() {
         console.debug(DEFINE.NAME, `"${title}": Parsed ${duration} as ${durationInSec} seconds`)
     }
 
-    console.info(DEFINE.NAME, 'renderDurationOnPlaylistPage()', `duration:${durationTracker.duration}`)
+    console.info(DEFINE.NAME, 'renderDurationOnPlaylistPage()', `duration:${durationTracker.duration} (${durationTracker.durationSec} sec)`)
     $(durationNode).text(`Duration: ${durationTracker.duration}`)
 }
