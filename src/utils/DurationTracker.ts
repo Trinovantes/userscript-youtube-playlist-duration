@@ -35,21 +35,19 @@ export class DurationTracker {
     }
 
     get duration(): string {
-        let duration = ''
+        let durationStr = ''
         let durationInSec = this._totalTime
-        let idx = toSecMultiplier.length - 1
 
-        while (durationInSec > 0) {
-            const interval = Math.floor(durationInSec / toSecMultiplier[idx])
-            if (interval > 0 || duration.length > 0) {
-                duration += `:${interval.toFixed(0).padStart(2, '0')}`
+        for (let i = toSecMultiplier.length - 1; i >= 0; i--) {
+            const interval = Math.floor(durationInSec / toSecMultiplier[i])
+            if (interval > 0 || durationStr.length > 0) {
+                durationStr += `:${interval.toFixed(0).padStart(2, '0')}`
             }
 
-            durationInSec %= toSecMultiplier[idx]
-            idx -= 1
+            durationInSec %= toSecMultiplier[i]
         }
 
-        return duration.substring(1)
+        return durationStr.substring(1)
     }
 
     get durationSec(): number {
