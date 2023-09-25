@@ -6,10 +6,10 @@ const toSecMultiplier = [
 ]
 
 export class DurationTracker {
-    private _totalTime: number // in sec
+    private _totalDuration: number // in sec
 
     constructor() {
-        this._totalTime = 0
+        this._totalDuration = 0
     }
 
     addDuration(duration: string): number {
@@ -30,13 +30,13 @@ export class DurationTracker {
             throw new Error(`Failed to parse duration "${duration}"`)
         }
 
-        this._totalTime += durationInSec
+        this._totalDuration += durationInSec
         return durationInSec
     }
 
-    get duration(): string {
+    get totalDuration(): string {
         let durationStr = ''
-        let durationInSec = this._totalTime
+        let durationInSec = this._totalDuration
 
         for (let i = toSecMultiplier.length - 1; i >= 0; i--) {
             const interval = Math.floor(durationInSec / toSecMultiplier[i])
@@ -50,7 +50,7 @@ export class DurationTracker {
         return durationStr.substring(1)
     }
 
-    get durationSec(): number {
-        return this._totalTime
+    get totalDurationSec(): number {
+        return this._totalDuration
     }
 }

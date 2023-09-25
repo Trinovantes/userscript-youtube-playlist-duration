@@ -1,6 +1,5 @@
-import { TITLE } from './Constants'
-import { renderDurationOnPlaylistPage } from './services/ytb/renderDurationOnPlaylistPage'
-import { renderDurationOnPlaylistVideo } from './services/ytb/renderDurationOnPlaylistVideo'
+import { renderDurationOnPlaylistPage } from './utils/renderDurationOnPlaylistPage'
+import { renderDurationOnPlaylistVideo } from './utils/renderDurationOnPlaylistVideo'
 
 function run() {
     Promise.all([
@@ -11,5 +10,4 @@ function run() {
     })
 }
 
-console.info(TITLE)
 window.addEventListener('yt-navigate-finish', run)
