@@ -1,5 +1,6 @@
 import { DurationTracker } from '@/utils/DurationTracker'
-import { findDelayedElement, findDelayedElements } from '@/utils/findDelayedElement'
+import { findDelayedElement } from '@/utils/findDelayedElement'
+import { findDelayedElementAll } from './findDelayedElementAll'
 import { isOnPlaylistPage } from './isOnPlaylistPage'
 import { createDurationNode } from './createDurationNode'
 import { durationNodeId } from '@/Constants'
@@ -9,7 +10,7 @@ export async function renderDurationOnPlaylistPage() {
         return
     }
 
-    const videoRows = await findDelayedElements('#contents.ytd-playlist-video-list-renderer > ytd-playlist-video-renderer')
+    const videoRows = await findDelayedElementAll('#contents.ytd-playlist-video-list-renderer > ytd-playlist-video-renderer')
     console.info(DEFINE.NAME, 'renderDurationOnPlaylistPage()', `videos:${videoRows.length}`)
 
     const durationTracker = new DurationTracker()
