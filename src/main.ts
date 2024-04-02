@@ -5,7 +5,7 @@ function run() {
     Promise.all([
         renderDurationOnPlaylistPage(),
         renderDurationOnPlaylistVideo(),
-    ]).catch((err) => {
+    ]).catch((err: unknown) => {
         console.warn(DEFINE.NAME, err)
     })
 }
