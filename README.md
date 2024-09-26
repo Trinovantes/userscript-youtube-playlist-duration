@@ -17,7 +17,7 @@ This userscript shows the total duration of YouTube playlists.
 1. Install prereqs
 
     * `node`
-    * `yarn`
+    * `pnpm`
     * Tampermonkey on Chrome
 
 2. In Chrome:
@@ -29,8 +29,8 @@ This userscript shows the total duration of YouTube playlists.
 3. Run dev server
 
     ```
-    yarn install
-    yarn dev
+    pnpm install
+    pnpm dev
     ```
 
 4. In Chrome:

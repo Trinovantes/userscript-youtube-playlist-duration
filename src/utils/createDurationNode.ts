@@ -1,4 +1,4 @@
-import { durationNodeId } from '@/Constants'
+import { durationNodeId } from '../Constants.ts'
 
 export function createDurationNode() {
     const node = document.createElement('strong')

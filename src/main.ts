@@ -1,12 +1,12 @@
-import { renderDurationOnPlaylistPage } from './utils/renderDurationOnPlaylistPage'
-import { renderDurationOnPlaylistVideo } from './utils/renderDurationOnPlaylistVideo'
+import { renderDurationOnPlaylistPage } from './utils/renderDurationOnPlaylistPage.ts'
+import { renderDurationOnPlaylistVideo } from './utils/renderDurationOnPlaylistVideo.ts'
 
 function run() {
     Promise.all([
         renderDurationOnPlaylistPage(),
         renderDurationOnPlaylistVideo(),
     ]).catch((err: unknown) => {
-        console.warn(DEFINE.NAME, err)
+        console.warn(__NAME__, err)
     })
 }
 
