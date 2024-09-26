@@ -1,9 +1,9 @@
-import { DurationTracker } from '@/utils/DurationTracker'
-import { findDelayedElement } from '@/utils/findDelayedElement'
-import { findDelayedElementAll } from './findDelayedElementAll'
-import { isOnPlaylistVideo } from './isOnPlaylistVideo'
-import { createDurationNode } from './createDurationNode'
-import { durationNodeId } from '@/Constants'
+import { DurationTracker } from '../utils/DurationTracker.ts'
+import { findDelayedElement } from '../utils/findDelayedElement.ts'
+import { findDelayedElementAll } from './findDelayedElementAll.ts'
+import { isOnPlaylistVideo } from './isOnPlaylistVideo.ts'
+import { createDurationNode } from './createDurationNode.ts'
+import { durationNodeId } from '../Constants.ts'
 
 export async function renderDurationOnPlaylistVideo() {
     if (!isOnPlaylistVideo()) {
@@ -11,23 +11,23 @@ export async function renderDurationOnPlaylistVideo() {
     }
 
     const playlistItems = await findDelayedElementAll('#content #container #items.playlist-items.ytd-playlist-panel-renderer > ytd-playlist-panel-video-renderer')
-    console.info(DEFINE.NAME, 'renderDurationOnPlaylistVideo()', `videos:${playlistItems.length}`)
+    console.info(__NAME__, 'renderDurationOnPlaylistVideo()', `videos:${playlistItems.length}`)
 
     const durationTracker = new DurationTracker()
-    console.groupCollapsed(DEFINE.NAME, 'renderDurationOnPlaylistVideo()')
+    console.groupCollapsed(__NAME__, 'renderDurationOnPlaylistVideo()')
 
     for (const playlistItem of playlistItems) {
         const titleWrapper = await findDelayedElement('span#video-title', playlistItem)
         const title = titleWrapper.textContent?.trim()
         if (!title) {
-            console.warn(DEFINE.NAME, 'Failed to parse video title', playlistItem)
+            console.warn(__NAME__, 'Failed to parse video title', playlistItem)
             continue
         }
 
         const durationWrapper = await findDelayedElement('span.ytd-thumbnail-overlay-time-status-renderer', playlistItem)
         const duration = durationWrapper.textContent?.trim()
         if (!duration) {
-            console.warn(DEFINE.NAME, 'Failed to parse video duration', playlistItem)
+            console.warn(__NAME__, 'Failed to parse video duration', playlistItem)
             continue
         }
 
@@ -36,7 +36,7 @@ export async function renderDurationOnPlaylistVideo() {
     }
 
     console.groupEnd()
-    console.info(DEFINE.NAME, 'renderDurationOnPlaylistVideo()', `duration:${durationTracker.totalDuration} (${durationTracker.totalDurationSec} sec)`)
+    console.info(__NAME__, 'renderDurationOnPlaylistVideo()', `duration:${durationTracker.totalDuration} (${durationTracker.totalDurationSec} sec)`)
 
     const durationNode = document.getElementById(durationNodeId) ?? createDurationNode()
     durationNode.textContent = `Duration: ${durationTracker.totalDuration}`
